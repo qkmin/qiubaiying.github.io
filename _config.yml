@@ -1,10 +1,10 @@
 # Site settings
-title: BY Blog
-SEOTitle: 庆康的博客 | BY Blog
+title: qkmin Blog
+SEOTitle: 庆康的博客 | qkmin Blog
 header-img: img/post-bg-desk.jpg
 email: 15766982194@163.com
 description: "Every failure is leading towards success."
-keyword: "BY, BY Blog, 庆康的博客, qkmin, 帅康, Android"
+keyword: "qkmin Blog, 庆康的博客, qkmin, 帅康, Android"
 url: "http://qkmin.github.io"          # your host, for absolute URL
 baseurl: ""      # for example, '/blog' if your blog hosted on 'host/blog'
 github_repo: "https://github.com/qkmin/qkmin.github.io.git" # you code repository
@@ -99,16 +99,7 @@ service-worker: true
 # Friends
 friends: [
     {
-        title: "WY",
-        href: "http://zhengwuyang.com"
-    },{
-        title: "简书·BY",
+        title: "简书·qkmin",
         href: "https://www.jianshu.com/u/80ec6268dd8e"
-    },{
-        title: "Apple",
-        href: "https://apple.com"
-    },{
-        title: "Apple Developer",
-        href: "https://developer.apple.com/"
     }
 ]
