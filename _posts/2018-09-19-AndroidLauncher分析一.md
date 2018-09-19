@@ -34,4 +34,4 @@ Launcher是开机启动的第一个应用程序，用来展示应用列表和快
 ### AndroidManifest.xml    
 一些不常用的标签
 ![123.png](https://upload-images.jianshu.io/upload_images/2607554-ee9755ecd74028f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)  
-###
+### java
