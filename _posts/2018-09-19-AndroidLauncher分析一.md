@@ -3,7 +3,7 @@ layout:     post
 title:      Launcher3分析<一>
 subtitle:   源码分析
 date:       2018-09-19
-author:     BY
+author:     qkmin
 header-img: img/post-bg-android.png
 catalog: true
 tags:
@@ -15,9 +15,9 @@ tags:
 ##多个Launcher
 源码里有Launcher，Launcher2，Launcher3。那它们有什么区别呢。  
 launcher不支持桌面小工具动画效果，launcher2添加了动画效果和3D初步效果支持。
-   
+
 Android 4.4 (KK)开始Launcher默认使用Launcher3，Launcher3较Launcher2 UI 有部分调整，主要包括:
-  
+
 *  状态栏透明，App List 透Wallpaper；
 * 增加overview模式，可以调整workspace上页面的前后顺序；      
 * 动态管理屏幕数量；       
@@ -50,10 +50,10 @@ Launcher是开机启动的第一个应用程序，用来展示应用列表和快
 	        LauncherAppState.getInstance().onTerminate();
 	    }
 	}
-    
+
 
 初始化LauncherAppState类，在继续看LauncherAppState类。   
-   
+
 	private LauncherAppState() {
 	      
 	        // set sIsScreenXLarge and mScreenDensity *before* creating icon cache
@@ -92,13 +92,14 @@ Launcher是开机启动的第一个应用程序，用来展示应用列表和快
 	    }
 
    
-   
+
+
 * 初始化中读取配置，注册广播，实例化LauncherModel。Launcher2源码 LauncherModel创建是在LauncherApplication ,Launcher3移到这个类来了。
 	
 	
 		  Maintains in-memory state of the Launcher. It is expected that there should be only one
-		  LauncherModel object held in a static. Also provide APIs for updating the database state
-		  for the Launcher.
+	​	  LauncherModel object held in a static. Also provide APIs for updating the database state
+	​	  for the Launcher.
 	
 
 单例，处理数据库。这个类继承BroadcastReceiver ，我们来重点看下这个类实现；
@@ -119,21 +120,21 @@ LoaderTask  加载
 看一下构造方法
 
 	LauncherModel(LauncherAppState app, IconCache iconCache, AppFilter appFilter) {
-	        final Context context = app.getContext();
+	​        final Context context = app.getContext();
 	
 	        mAppsCanBeOnRemoveableStorage = Environment.isExternalStorageRemovable();
 	        mApp = app;
 	        mBgAllAppsList = new AllAppsList(iconCache, appFilter);
 	        mIconCache = iconCache;
-	
+	    
 	        mDefaultIcon = Utilities.createIconBitmap(
 	                mIconCache.getFullResDefaultActivityIcon(), context);
-	
+	    
 	        final Resources res = context.getResources();
 	        Configuration config = res.getConfiguration();
 	        mPreviousConfigMcc = config.mcc; //	SIM卡相关
 	    }
-  
+
 传入LauncherAppState 来获取 context，WidgetPreviewLoader.CacheDb操作数据库；
 IconCache类是用来缓存app图标
 LauncherModle继承BroadcastReceiver 我们看下onReceive做了什么处理；
