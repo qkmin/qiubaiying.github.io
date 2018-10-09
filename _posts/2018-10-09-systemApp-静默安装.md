@@ -4,7 +4,7 @@ title:      system app 静默安装
 subtitle:   静默安装
 date:       2018-10-09
 author:     qkmin
-header-img: img/img/post-bg-android.png
+header-img: img/post-bg-ios9-web.jpg
 catalog: true
 tags:
     - Android
