@@ -64,4 +64,7 @@ static class PackageInstallObserver extends IPackageInstallObserver.Stub {
 
 最后别忘记加权限
 
-`<uses-permission android:name="android.permission.INSTALL_PACKAGES" />`
+`<uses-permission android:name="android.permission.INSTALL_PACKAGES" />` 
+
+# 通过adb协议实现静默安装 
+app和127.0.0.1:5555 会建立连接，模拟adb 命令就能实现静默安装，在4.4.2可以，其他版本未试
