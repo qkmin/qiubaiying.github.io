@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      ijkplayer
+title:      ijkplayer编译
 subtitle:   
 date:       2019-03-05
 author:     qkmin
@@ -8,6 +8,7 @@ header-img: img/post-bg-swift.jpg
 catalog: true
 tags:
     - ijkplayer编译
+    - Android播放器
 ---
 # 引言
 公司的直播项目要求兼容rtsp协议,调用原生的mediaplayer播放不了。网上开源的播放器有：
