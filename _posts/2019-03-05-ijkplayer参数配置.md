@@ -1,46 +1,63 @@
 ---
 layout:     post
-title:      ijkplayer编译
+title:      ijkplayer设置
 subtitle:   
 date:       2019-03-05
 author:     qkmin
 header-img: img/post-bg-swift.jpg
 catalog: true
 tags:
-    - ijkplayer编译
+    - ijkplayer设置
     - Android播放器
 ---
-# 引言
-公司的直播项目要求兼容rtsp协议,调用原生的mediaplayer播放不了。网上开源的播放器有：
-- ExoPlayer 
 
-- Vitamio
-
-- ijkplayer
-
-最终选用ijkplayer，基于FFmpeg的轻量级Android/iOS视频播放器，最主要的百度资料很多，坑少。
-# 编译
-ijkplayer的 github项目地址：https://github.com/bilibili/ijkplayer
-Before Build
-	安装 git, yasm 配置NDK export ANDROID_NDK="/android-ndk-r12b"
+ijkplayer 硬解码
 ```
-	cd config
-	rm module.sh
-	ln -s module-default.sh module.sh
-	cd android/contrib
+在IjkVideoView类createPlayer（）
+ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec", 1);
+ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec-auto-rotate", 1);
+ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec-handle-resolution-change", 1);
 ```
-Build Android
+我们在demo提供的Settings类修改配置文件也可以
 ```
-	git clone https://github.com/Bilibili/ijkplayer.git ijkplayer-android
-	cd ijkplayer-android
-	./init-android.sh
+public boolean getUsingMediaCodec() {
+        String key = mAppContext.getString(R.string.pref_key_using_media_codec);
+        return mSharedPreferences.getBoolean(key, true);
+    }
 
-	cd android/contrib
-	./compile-ffmpeg.sh clean
-    ./compile-ffmpeg.sh all
+public boolean getUsingMediaCodecAutoRotate() {
+  	String key = mAppContext.getString(R.string.pref_key_using_media_codec_auto_rotate);
+        return mSharedPreferences.getBoolean(key, true);
+    }
 
-    cd ..
-    ./compile-ijk.sh all
+public boolean getMediaCodecHandleResolutionChange() {
+   		String key = mAppContext.getString(R.string.pref_key_media_codec_handle_resolution_change);
+        return mSharedPreferences.getBoolean(key, true);
+    }
 ```
-编译成功后我们可以导入demo来查看用法
+rtsp协议支持
+```
 
+ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "framedrop", 1L);
+ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "start-on-prepared", 0);
+// 设置最长分析时长
+ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, "analyzemaxduration", 100L);
+// 通过立即清理数据包来减少等待时长
+ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, "flush_packets", 1L);
+// 暂停输出直到停止后读取足够的数据包					ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "packet-buffering", 0L);	ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, "http-detect-range-support", 0);				
+ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_CODEC, "skip_loop_filter", 48);//48 to 0			
+ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "probesize", "524288");  //for first display fast, but maybe can not play succ
+ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_FORMAT, "rtsp_transport", "tcp");
+
+```
+H265硬解码
+
+```
+h265硬解码失败后自动转成软解
+error:ffpipenode_create_video_decoder_from_android_mediacodec: MediaCodec/HEVC is disabled. codec_id:174
+
+//打开h265硬解
+ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec-hevc", 1);
+```
+
+未完待续...
