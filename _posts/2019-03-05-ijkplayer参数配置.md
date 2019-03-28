@@ -2,7 +2,7 @@
 layout:     post
 title:      ijkplayer设置
 subtitle:   
-date:       2019-03-05
+date:       2019-03-28
 author:     qkmin
 header-img: img/post-bg-swift.jpg
 catalog: true
@@ -59,5 +59,15 @@ error:ffpipenode_create_video_decoder_from_android_mediacodec: MediaCodec/HEVC i
 //打开h265硬解
 ijkMediaPlayer.setOption(IjkMediaPlayer.OPT_CATEGORY_PLAYER, "mediacodec-hevc", 1);
 ```
+
+混淆
+
+```
+-keep class tv.danmaku.ijk.media.player.** {*;}
+-keep class tv.danmaku.ijk.media.player.IjkMediaPlayer{*;}
+-keep class tv.danmaku.ijk.media.player.ffmpeg.FFmpegApi{*;}
+```
+
+
 
 未完待续...
