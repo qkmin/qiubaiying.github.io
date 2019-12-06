@@ -1,5 +1,5 @@
 ---
-s layout:     post
+layout:     post
 title:      Android framework添加系统jar
 subtitle:   
 date:       2019-12-01
