@@ -7,9 +7,7 @@ author:     qkmin
 header-img: img/post-bg-ios9-web.jpg
 catalog: true
 tags:
-    - Android 8.0
-	- 8386
-	- mstar
+    - Android 8.0 mstar 8386
     - Android framework
 ---
 
