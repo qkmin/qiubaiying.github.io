@@ -20,19 +20,28 @@ ps -A
 WITH_DEXPREOPT =false
 mm就可以生成framework.jar包，调试起来就方便
 
+
+
 #显示BootClass
 
 $BOOTCLASSPATH
+
+
 
 #应用调用so库报错
 
 添加so库到package_whitelist.txt
 
+
+
 #关闭内核打印
 
 echo 1       4       1      7 > /proc/sys/kernel/printk
 
+
+
 #恢复出厂设置
+
 ```
 	private void intoRecovery(){
 		IntentresetIntent;
