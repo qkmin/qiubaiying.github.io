@@ -1,5 +1,5 @@
 ---
-s layout:     post
+layout:     post
 title:      Android framework8.0调试
 subtitle:   
 date:       2019-12-06
