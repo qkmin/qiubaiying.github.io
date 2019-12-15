@@ -1,13 +1,14 @@
 ---
 layout:     post
 title:      Android壁纸
-subtitle:   
+subtitle:  
 date:       2019-12-15
 author:     qkmin
 header-img: img/post-bg-ios9-web.jpg
 catalog: true
 tags:
-    - 壁纸
+    - Android 
+
 ---
 
 #设置壁纸方法
