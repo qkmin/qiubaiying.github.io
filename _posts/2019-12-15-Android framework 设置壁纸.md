@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Android framework 壁纸
+title:      Android壁纸
 subtitle:   
 date:       2019-12-15
 author:     qkmin
@@ -8,7 +8,6 @@ header-img: img/post-bg-ios9-web.jpg
 catalog: true
 tags:
     - 壁纸
-	- Android
 ---
 
 #设置壁纸方法
