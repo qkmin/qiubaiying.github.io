@@ -13,9 +13,11 @@ tags:
 
 #设置壁纸方法
 ```
- WallpaperManager.getInstance(context).setBitmap();
- WallpaperManager.getInstance(context).setResource();
- WallpaperManager.getInstance(context).setStream();
+WallpaperManager wallpaperManager = (WallpaperManager) mActivity.getSystemService(
+                        Context.WALLPAPER_SERVICE);
+wallpaperManager.setBitmap();
+wallpaperManager.setResource();
+wallpaperManager.setStream();
 ```
 
 #设置壁纸需要的权限
@@ -27,7 +29,9 @@ tags:
 #获取壁纸方法
 
 ```
-WallpaperManager.getInstance(this).getDrawable()
+WallpaperManager wallpaperManager = (WallpaperManager) mActivity.getSystemService(
+                        Context.WALLPAPER_SERVICE);
+wallpaperManager.getDrawable()
 ```
 
 
