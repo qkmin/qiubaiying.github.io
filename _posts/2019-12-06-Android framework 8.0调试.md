@@ -50,5 +50,22 @@ echo 1       4       1      7 > /proc/sys/kernel/printk
 
 ```
 
+#修改设备的mac地址
+```
+Linux ：
+$ sudo ifconfig eth0 down
+$ sudo ifconfig eth0 hw ether 80:00:00:00:00:01
+$ sudo ifconfig eth0 up
+Android：
+Ethernet 
+# busybox ifconfig eth0 down
+# busybox ifconfig eth0 hw ether 80:00:00:00:00:01
+# busybox ifconfig eth0 up
+or
+Wlan
+# busybox ifconfig wlan0 down
+# busybox ifconfig wlan0 hw ether 80:00:00:00:00:01
+# busybox ifconfig wlan0 up
 
+```
 
