@@ -105,6 +105,7 @@ private void maybeFinish() {
 finish之后系统会再次调用到AMS的`startHomeActivityLocked`，这时候就已经可以查询到两个声明CATEGORY_HOME的activity了。但此时依然不会有应用选择对话框。这是因为FallbackHome在manifest中声明了自己的优先级为-1000，PackageManagerService里面对这样的情况是做了处理的。  
 
 #开机向导启动  
+
 启动FallbackHome后，第一次会启动开机向导，因为开机向导的优先级比launcher高
 
 进入Google开机向导后，首先判断系统是否需要进入开机向导，通过以下三个参数的值：
@@ -123,8 +124,9 @@ System property: ro.setupwizard.mode (默认配置为OPTIONAL)
 `DEVICE_PROVISIONED`用来标识是否走完开机向导
  `USER_SETUP_COMPLETE`与`ro.setupwizard.mode`是为多用户系统服务的，所知不多，暂不深入分析。
 
-`DEVICE_PROVISIONED`为0，表示需要正常进入开机向导流程。
+`DEVICE_PROVISIONED`为0，表示需要正常进入开机向导流程。  
 
 #开机向导为什么只会启动一次  
+
 
 退出开机向导后会把HOME category禁用
