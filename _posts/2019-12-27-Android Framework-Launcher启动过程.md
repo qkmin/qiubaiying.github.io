@@ -8,8 +8,9 @@ header-img: img/post-bg-ios9-web.jpg
 catalog: true
 tags:
     - Android 
-	- Launcher
+    - AndroidFramework
 ---
+
 # launcher启动
 Android开机过程中，会把各种系统服务拉起，并且调用其systemReady()函数，其中最关键的ActivityManagerService拉起后，systemReady()中调用了一个函数`startHomeActivityLocked()`，
 
