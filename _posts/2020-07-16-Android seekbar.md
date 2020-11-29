@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Android 多次点击
+title:      Android SeekBar 问题 
 subtitle:   
 date:       2020-07-16
 author:     qkmin
